@@ -1,5 +1,6 @@
 package com.castilho.workshopmongo.resources;
 
+import com.castilho.workshopmongo.domain.Post;
 import com.castilho.workshopmongo.domain.User;
 import com.castilho.workshopmongo.dto.UserDTO;
 import com.castilho.workshopmongo.services.UserService;
@@ -52,6 +53,12 @@ public class UserResource {
         obj.setId(id);
         service.update(obj);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(value = "/{id}/posts")
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id){
+        User obj = service.findById(id);
+        return ResponseEntity.ok().body(obj.getPosts());
     }
 
 }
