@@ -49,6 +49,4 @@ public class UserService {
         return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
     }
 
-
-
 }
